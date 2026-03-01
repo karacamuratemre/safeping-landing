@@ -1,12 +1,8 @@
 {
   "version": 2,
-  "name": "safeping-landing",
+  "name": "safeping",
   "cleanUrls": true,
   "trailingSlash": false,
-  "routes": [
-    { "src": "/privacy", "dest": "/privacy.html" },
-    { "src": "/terms", "dest": "/terms.html" }
-  ],
   "headers": [
     {
       "source": "/(.*)",
