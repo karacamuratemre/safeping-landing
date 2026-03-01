@@ -1,0 +1,3002 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafePing - Daily Check-in for Peace of Mind</title>
+    <meta name="description" content="SafePing helps families stay connected with elderly loved ones through simple daily check-ins. Know they're safe, every day.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="SafePing - Daily Check-in for Peace of Mind">
+    <meta property="og:description" content="Keep your loved ones safe with daily check-ins. SOS alerts, medication reminders, and family groups.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://safeping.app">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2c5282;
+            --secondary: #e53e3e;
+            --accent: #38b2ac;
+            --accent-light: #81e6d9;
+            --bg-cream: #fefcf8;
+            --bg-warm: #fdf6ec;
+            --text-dark: #1a202c;
+            --text-muted: #4a5568;
+            --text-light: #718096;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --radius-full: 9999px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Language Toggle */
+        [data-lang="en"] .tr { display: none; }
+        [data-lang="tr"] .en { display: none; }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(254, 252, 248, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: var(--shadow);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .lang-toggle {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-full);
+            padding: 4px;
+        }
+
+        .lang-btn {
+            padding: 6px 12px;
+            border: none;
+            background: transparent;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            background: var(--bg-warm);
+        }
+
+        .btn-accent {
+            background: linear-gradient(135deg, var(--secondary), #c53030);
+            color: white;
+        }
+
+        .btn-accent:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu-btn span {
+            width: 24px;
+            height: 2px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(ellipse, rgba(56, 178, 172, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-text {
+            animation: fadeInUp 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--white);
+            border: 1px solid var(--border);
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .hero-badge span {
+            color: var(--accent);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.75rem);
+            color: var(--primary);
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .highlight {
+            color: var(--secondary);
+            position: relative;
+        }
+
+        .hero h1 .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: rgba(229, 62, 62, 0.2);
+            border-radius: 4px;
+            z-index: -1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat-value {
+            font-family: 'Fraunces', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .phone-mockup {
+            position: relative;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        .phone-frame {
+            background: linear-gradient(145deg, #1a365d, #2c5282);
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .phone-screen {
+            background: var(--white);
+            border-radius: 32px;
+            padding: 24px;
+            min-height: 500px;
+        }
+
+        .phone-header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 24px;
+        }
+
+        .phone-header h3 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        .phone-header p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .checkin-button {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, var(--accent), #2c7a7b);
+            border: none;
+            margin: 40px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 10px 40px rgba(56, 178, 172, 0.4);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 10px 40px rgba(56, 178, 172, 0.4); }
+            50% { box-shadow: 0 10px 60px rgba(56, 178, 172, 0.6); }
+        }
+
+        .checkin-button:hover {
+            transform: scale(1.05);
+        }
+
+        .checkin-button .icon {
+            font-size: 3rem;
+            margin-bottom: 8px;
+        }
+
+        .checkin-button .text {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .phone-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 24px;
+            padding: 12px;
+            background: var(--bg-warm);
+            border-radius: var(--radius);
+        }
+
+        .phone-footer-item {
+            text-align: center;
+        }
+
+        .phone-footer-item .label {
+            font-size: 0.7rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+
+        .phone-footer-item .value {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            padding: 16px 20px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-card.card-1 {
+            top: 60px;
+            right: -40px;
+            animation-delay: 0s;
+        }
+
+        .floating-card.card-2 {
+            bottom: 80px;
+            left: -40px;
+            animation-delay: 1s;
+        }
+
+        .floating-card .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .floating-card .icon.green {
+            background: rgba(56, 178, 172, 0.1);
+            color: var(--accent);
+        }
+
+        .floating-card .icon.red {
+            background: rgba(229, 62, 62, 0.1);
+            color: var(--secondary);
+        }
+
+        .floating-card .text {
+            font-size: 0.85rem;
+        }
+
+        .floating-card .text strong {
+            display: block;
+            color: var(--text-dark);
+        }
+
+        .floating-card .text span {
+            color: var(--text-light);
+            font-size: 0.75rem;
+        }
+
+        /* ===== SECTIONS COMMON ===== */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: var(--bg-warm);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== PROBLEM SECTION ===== */
+        .problem {
+            background: var(--white);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .problem-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .problem-stat {
+            background: var(--bg-cream);
+            padding: 32px;
+            border-radius: var(--radius);
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .problem-stat .number {
+            font-family: 'Fraunces', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--secondary);
+            line-height: 1;
+        }
+
+        .problem-stat .label {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        .solution-points {
+            list-style: none;
+        }
+
+        .solution-points li {
+            display: flex;
+            gap: 16px;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .solution-points li:last-child {
+            border-bottom: none;
+        }
+
+        .solution-points .check {
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+
+        .solution-points .content h4 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .solution-points .content p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            background: linear-gradient(180deg, var(--bg-cream) 0%, var(--bg-warm) 100%);
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            position: relative;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 15%;
+            right: 15%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+            z-index: 0;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--white);
+            border: 3px solid var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .step:hover .step-number {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .step h3 {
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== FEATURES ===== */
+        .features {
+            background: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: var(--bg-cream);
+            padding: 40px 32px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 24px;
+        }
+
+        .feature-card:nth-child(2) .feature-icon {
+            background: linear-gradient(135deg, #feb2b2, var(--secondary));
+        }
+
+        .feature-card:nth-child(3) .feature-icon {
+            background: linear-gradient(135deg, #c3dafe, #667eea);
+        }
+
+        .feature-card:nth-child(4) .feature-icon {
+            background: linear-gradient(135deg, #faf089, #d69e2e);
+        }
+
+        .feature-card:nth-child(5) .feature-icon {
+            background: linear-gradient(135deg, #c6f6d5, #48bb78);
+        }
+
+        .feature-card:nth-child(6) .feature-icon {
+            background: linear-gradient(135deg, #e9d8fd, #9f7aea);
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* ===== TARGET AUDIENCE ===== */
+        .audience {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+        }
+
+        .audience .section-tag {
+            background: rgba(255,255,255,0.15);
+            color: white;
+        }
+
+        .audience .section-header h2,
+        .audience .section-header p {
+            color: white;
+        }
+
+        .audience-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .audience-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px 32px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .audience-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-8px);
+        }
+
+        .audience-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 24px;
+        }
+
+        .audience-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .audience-card p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+        }
+
+        .audience-card ul {
+            list-style: none;
+            text-align: left;
+        }
+
+        .audience-card li {
+            padding: 8px 0;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .audience-card li::before {
+            content: '✓';
+            color: var(--accent-light);
+            font-weight: bold;
+        }
+
+        /* ===== ROADMAP ===== */
+        .roadmap {
+            background: var(--bg-cream);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--accent), var(--primary));
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-date {
+            flex: 1;
+            text-align: right;
+            padding-top: 16px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-date {
+            text-align: left;
+        }
+
+        .timeline-date span {
+            background: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: var(--radius-full);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: var(--white);
+            padding: 24px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .timeline-content h4 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .timeline-content p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border: 4px solid var(--bg-cream);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+
+        .timeline-item.completed .timeline-dot {
+            background: var(--primary);
+        }
+
+        /* ===== PRICING ===== */
+        .pricing {
+            background: var(--white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .pricing-card {
+            background: var(--bg-cream);
+            padding: 32px;
+            border-radius: var(--radius);
+            border: 2px solid var(--border);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.popular {
+            border-color: var(--accent);
+            background: var(--white);
+        }
+
+        .pricing-card.popular::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent);
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 4px 16px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .pricing-header {
+            text-align: center;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 24px;
+        }
+
+        .pricing-header h3 {
+            font-size: 1.25rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .pricing-header .price {
+            font-family: 'Fraunces', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .pricing-header .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ===== INVESTOR SECTION ===== */
+        .investor {
+            background: linear-gradient(180deg, var(--bg-warm) 0%, var(--bg-cream) 100%);
+        }
+
+        .investor-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .investor-info h2 {
+            font-size: 2.25rem;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .investor-info > p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .projection-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            margin-bottom: 24px;
+        }
+
+        .projection-card h4 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .projection-table {
+            width: 100%;
+            font-size: 0.9rem;
+        }
+
+        .projection-table tr {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .projection-table td {
+            padding: 12px 0;
+        }
+
+        .projection-table td:last-child {
+            text-align: right;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .refund-notice {
+            background: rgba(56, 178, 172, 0.1);
+            padding: 24px;
+            border-radius: var(--radius);
+            border-left: 4px solid var(--accent);
+        }
+
+        .refund-notice h4 {
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .refund-notice p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .investor-form-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+        }
+
+        .investor-form-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .investor-form-card > p {
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            background: var(--bg-cream);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        .testimonial-stars {
+            color: #f6ad55;
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .testimonial-author-info strong {
+            display: block;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .testimonial-author-info span {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* ===== FAQ ===== */
+        .faq {
+            background: var(--white);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 24px 0;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: inherit;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--accent);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            padding-bottom: 24px;
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* ===== CONTACT ===== */
+        .contact {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 12px;
+        }
+
+        .contact-form input {
+            flex: 1;
+            padding: 16px 20px;
+            border: none;
+            border-radius: var(--radius-full);
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .contact-form input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255,255,255,0.3);
+        }
+
+        .store-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 12px 24px;
+            border-radius: var(--radius);
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .store-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .store-btn .icon {
+            font-size: 1.5rem;
+        }
+
+        .store-btn .text {
+            text-align: left;
+        }
+
+        .store-btn .text small {
+            display: block;
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+
+        .store-btn .text strong {
+            font-size: 1rem;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand .logo {
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand .logo-icon {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
+            font-size: 1rem;
+            margin-bottom: 20px;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero-content,
+            .problem-grid,
+            .investor-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps::before {
+                display: none;
+            }
+
+            .features-grid,
+            .audience-cards,
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                flex-direction: column;
+                padding-left: 50px;
+            }
+
+            .timeline-date {
+                text-align: left !important;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .steps,
+            .features-grid,
+            .audience-cards,
+            .pricing-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .contact-form {
+                flex-direction: column;
+            }
+
+            .store-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                margin: 0 auto;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .floating-card {
+                display: none;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger animations */
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+        .stagger-5 { transition-delay: 0.5s; }
+        .stagger-6 { transition-delay: 0.6s; }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <div class="logo-icon">🛡️</div>
+                    SafePing
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="#features" class="en">Features</a><a href="#features" class="tr">Özellikler</a></li>
+                    <li><a href="#pricing" class="en">Pricing</a><a href="#pricing" class="tr">Fiyatlar</a></li>
+                    <li><a href="#roadmap" class="en">Roadmap</a><a href="#roadmap" class="tr">Yol Haritası</a></li>
+                    <li><a href="#investor" class="en">Investors</a><a href="#investor" class="tr">Yatırımcılar</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+
+                <div class="nav-right">
+                    <div class="lang-toggle">
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="tr">TR</button>
+                    </div>
+                    <a href="#contact" class="btn btn-primary">
+                        <span class="en">Get Started</span>
+                        <span class="tr">Başla</span>
+                    </a>
+                </div>
+
+                <button class="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <span>✨</span>
+                        <span class="en">Launching Q1 2026</span>
+                        <span class="tr">Q1 2026'da Lansman</span>
+                    </div>
+                    
+                    <h1>
+                        <span class="en">Are Your <span class="highlight">Loved Ones</span> Safe?</span>
+                        <span class="tr">Sevdikleriniz <span class="highlight">Güvende</span> Mi?</span>
+                    </h1>
+                    
+                    <p>
+                        <span class="en">Daily check-ins that give families peace of mind. A simple "I'm OK" button keeps everyone connected, with instant alerts if something's wrong.</span>
+                        <span class="tr">Ailelere huzur veren günlük check-in'ler. Basit bir "İyiyim" butonu herkesi bağlı tutar, bir şeyler ters giderse anında uyarı gönderir.</span>
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">
+                            <span class="en">Start Free Trial</span>
+                            <span class="tr">Ücretsiz Dene</span>
+                            →
+                        </a>
+                        <a href="#how-it-works" class="btn btn-secondary">
+                            <span class="en">See How It Works</span>
+                            <span class="tr">Nasıl Çalışır?</span>
+                        </a>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-value">50K+</div>
+                            <div class="stat-label">
+                                <span class="en">Target Users</span>
+                                <span class="tr">Hedef Kullanıcı</span>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">5</div>
+                            <div class="stat-label">
+                                <span class="en">Languages</span>
+                                <span class="tr">Dil Desteği</span>
+                            </div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">24/7</div>
+                            <div class="stat-label">
+                                <span class="en">Monitoring</span>
+                                <span class="tr">Takip</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="phone-mockup">
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <div class="phone-header">
+                                    <h3>
+                                        <span class="en">How are you today?</span>
+                                        <span class="tr">Bugün nasılsın?</span>
+                                    </h3>
+                                    <p>
+                                        <span class="en">Tap to let your family know</span>
+                                        <span class="tr">Ailene haber vermek için dokun</span>
+                                    </p>
+                                </div>
+                                
+                                <button class="checkin-button">
+                                    <span class="icon">✓</span>
+                                    <span class="text">
+                                        <span class="en">I'm OK</span>
+                                        <span class="tr">İyiyim</span>
+                                    </span>
+                                </button>
+
+                                <div class="phone-footer">
+                                    <div class="phone-footer-item">
+                                        <div class="label">
+                                            <span class="en">Last</span>
+                                            <span class="tr">Son</span>
+                                        </div>
+                                        <div class="value">09:30</div>
+                                    </div>
+                                    <div class="phone-footer-item">
+                                        <div class="label">
+                                            <span class="en">Streak</span>
+                                            <span class="tr">Seri</span>
+                                        </div>
+                                        <div class="value">7 🔥</div>
+                                    </div>
+                                    <div class="phone-footer-item">
+                                        <div class="label">
+                                            <span class="en">Contacts</span>
+                                            <span class="tr">Kişiler</span>
+                                        </div>
+                                        <div class="value">3 👥</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="floating-card card-1">
+                        <div class="icon green">✓</div>
+                        <div class="text">
+                            <strong>
+                                <span class="en">Mom checked in</span>
+                                <span class="tr">Annen check-in yaptı</span>
+                            </strong>
+                            <span>
+                                <span class="en">2 minutes ago</span>
+                                <span class="tr">2 dakika önce</span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="floating-card card-2">
+                        <div class="icon red">🆘</div>
+                        <div class="text">
+                            <strong>
+                                <span class="en">SOS Alert Ready</span>
+                                <span class="tr">SOS Hazır</span>
+                            </strong>
+                            <span>
+                                <span class="en">One-tap emergency</span>
+                                <span class="tr">Tek tıkla acil durum</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM & SOLUTION -->
+    <section class="problem" id="problem">
+        <div class="container">
+            <div class="problem-grid">
+                <div class="problem-stats fade-in">
+                    <div class="section-tag">
+                        <span class="en">The Problem</span>
+                        <span class="tr">Problem</span>
+                    </div>
+                    <h2>
+                        <span class="en">Millions worry about their elderly loved ones every day</span>
+                        <span class="tr">Milyonlarca kişi yaşlı sevdikleri için her gün endişeleniyor</span>
+                    </h2>
+                    
+                    <div class="problem-stats" style="margin-top: 40px;">
+                        <div class="problem-stat">
+                            <div class="number">30%</div>
+                            <div class="label">
+                                <span class="en">of seniors live alone</span>
+                                <span class="tr">yaşlı yalnız yaşıyor</span>
+                            </div>
+                        </div>
+                        <div class="problem-stat">
+                            <div class="number">65%</div>
+                            <div class="label">
+                                <span class="en">of families worry daily</span>
+                                <span class="tr">aile günlük endişe duyuyor</span>
+                            </div>
+                        </div>
+                        <div class="problem-stat">
+                            <div class="number">4h</div>
+                            <div class="label">
+                                <span class="en">average response time</span>
+                                <span class="tr">ortalama müdahale süresi</span>
+                            </div>
+                        </div>
+                        <div class="problem-stat">
+                            <div class="number">1B+</div>
+                            <div class="label">
+                                <span class="en">global elderly population</span>
+                                <span class="tr">küresel yaşlı nüfusu</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in stagger-2">
+                    <div class="section-tag">
+                        <span class="en">The Solution</span>
+                        <span class="tr">Çözüm</span>
+                    </div>
+                    <h2 style="margin-bottom: 32px;">
+                        <span class="en">SafePing makes staying connected effortless</span>
+                        <span class="tr">SafePing bağlı kalmayı zahmetsiz hale getirir</span>
+                    </h2>
+                    
+                    <ul class="solution-points">
+                        <li>
+                            <span class="check">✓</span>
+                            <div class="content">
+                                <h4>
+                                    <span class="en">One-Tap Check-ins</span>
+                                    <span class="tr">Tek Dokunuşla Check-in</span>
+                                </h4>
+                                <p>
+                                    <span class="en">Simple "I'm OK" button that takes 2 seconds. No complicated apps.</span>
+                                    <span class="tr">2 saniye süren basit "İyiyim" butonu. Karmaşık uygulama yok.</span>
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            <div class="content">
+                                <h4>
+                                    <span class="en">Automatic Alerts</span>
+                                    <span class="tr">Otomatik Uyarılar</span>
+                                </h4>
+                                <p>
+                                    <span class="en">Family gets notified if check-in is missed. No manual calling needed.</span>
+                                    <span class="tr">Check-in kaçırılırsa aileye haber gider. Manuel arama gerekmez.</span>
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="check">✓</span>
+                            <div class="content">
+                                <h4>
+                                    <span class="en">Emergency SOS</span>
+                                    <span class="tr">Acil Durum SOS</span>
+                                </h4>
+                                <p>
+                                    <span class="en">One-touch SOS sends location and alerts all contacts instantly.</span>
+                                    <span class="tr">Tek dokunuşla SOS, konumu ve uyarıları tüm kişilere anında gönderir.</span>
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <span class="en">How It Works</span>
+                    <span class="tr">Nasıl Çalışır</span>
+                </div>
+                <h2>
+                    <span class="en">Get started in minutes</span>
+                    <span class="tr">Dakikalar içinde başlayın</span>
+                </h2>
+                <p>
+                    <span class="en">Simple setup, powerful protection</span>
+                    <span class="tr">Basit kurulum, güçlü koruma</span>
+                </p>
+            </div>
+
+            <div class="steps">
+                <div class="step fade-in stagger-1">
+                    <div class="step-number">1</div>
+                    <h3>
+                        <span class="en">Download App</span>
+                        <span class="tr">Uygulamayı İndir</span>
+                    </h3>
+                    <p>
+                        <span class="en">Free on iOS & Android</span>
+                        <span class="tr">iOS ve Android'de ücretsiz</span>
+                    </p>
+                </div>
+
+                <div class="step fade-in stagger-2">
+                    <div class="step-number">2</div>
+                    <h3>
+                        <span class="en">Add Contacts</span>
+                        <span class="tr">Kişileri Ekle</span>
+                    </h3>
+                    <p>
+                        <span class="en">Up to 10 trusted people</span>
+                        <span class="tr">10 güvenilir kişiye kadar</span>
+                    </p>
+                </div>
+
+                <div class="step fade-in stagger-3">
+                    <div class="step-number">3</div>
+                    <h3>
+                        <span class="en">Set Schedule</span>
+                        <span class="tr">Program Ayarla</span>
+                    </h3>
+                    <p>
+                        <span class="en">Daily or 48-hour reminders</span>
+                        <span class="tr">Günlük veya 48 saatlik hatırlatmalar</span>
+                    </p>
+                </div>
+
+                <div class="step fade-in stagger-4">
+                    <div class="step-number">4</div>
+                    <h3>
+                        <span class="en">Stay Connected</span>
+                        <span class="tr">Bağlı Kal</span>
+                    </h3>
+                    <p>
+                        <span class="en">Tap "I'm OK" daily</span>
+                        <span class="tr">Günlük "İyiyim" butonuna bas</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <span class="en">Features</span>
+                    <span class="tr">Özellikler</span>
+                </div>
+                <h2>
+                    <span class="en">Everything you need to stay connected</span>
+                    <span class="tr">Bağlı kalmak için ihtiyacınız olan her şey</span>
+                </h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card fade-in stagger-1">
+                    <div class="feature-icon">🔔</div>
+                    <h3>
+                        <span class="en">Daily Check-ins</span>
+                        <span class="tr">Günlük Check-in</span>
+                    </h3>
+                    <p>
+                        <span class="en">Simple one-tap button to let your family know you're safe. Gentle reminders if you forget.</span>
+                        <span class="tr">Ailenize güvende olduğunuzu bildirmek için tek dokunuşla buton. Unutursanız nazik hatırlatmalar.</span>
+                    </p>
+                </div>
+
+                <div class="feature-card fade-in stagger-2">
+                    <div class="feature-icon">🆘</div>
+                    <h3>
+                        <span class="en">SOS Emergency</span>
+                        <span class="tr">SOS Acil Durum</span>
+                    </h3>
+                    <p>
+                        <span class="en">One-touch emergency button that sends your location to all contacts instantly.</span>
+                        <span class="tr">Konumunuzu anında tüm kişilere gönderen tek dokunuşla acil durum butonu.</span>
+                    </p>
+                </div>
+
+                <div class="feature-card fade-in stagger-3">
+                    <div class="feature-icon">📍</div>
+                    <h3>
+                        <span class="en">Location Sharing</span>
+                        <span class="tr">Konum Paylaşımı</span>
+                    </h3>
+                    <p>
+                        <span class="en">Automatic location sharing when check-ins are missed or SOS is triggered.</span>
+                        <span class="tr">Check-in kaçırıldığında veya SOS tetiklendiğinde otomatik konum paylaşımı.</span>
+                    </p>
+                </div>
+
+                <div class="feature-card fade-in stagger-4">
+                    <div class="feature-icon">💊</div>
+                    <h3>
+                        <span class="en">Medication Reminders</span>
+                        <span class="tr">İlaç Hatırlatıcı</span>
+                    </h3>
+                    <p>
+                        <span class="en">Never miss a dose. Set up medication schedules with customizable reminders.</span>
+                        <span class="tr">Asla bir dozu kaçırmayın. Özelleştirilebilir hatırlatmalarla ilaç programları ayarlayın.</span>
+                    </p>
+                </div>
+
+                <div class="feature-card fade-in stagger-5">
+                    <div class="feature-icon">👨‍👩‍👧‍👦</div>
+                    <h3>
+                        <span class="en">Family Groups</span>
+                        <span class="tr">Aile Grupları</span>
+                    </h3>
+                    <p>
+                        <span class="en">Create family groups to monitor multiple loved ones from one dashboard.</span>
+                        <span class="tr">Birden fazla sevdiklerinizi tek panelden izlemek için aile grupları oluşturun.</span>
+                    </p>
+                </div>
+
+                <div class="feature-card fade-in stagger-6">
+                    <div class="feature-icon">👩‍⚕️</div>
+                    <h3>
+                        <span class="en">Caregiver Dashboard</span>
+                        <span class="tr">Bakıcı Paneli</span>
+                    </h3>
+                    <p>
+                        <span class="en">Professional caregivers can manage up to 20 patients with detailed analytics.</span>
+                        <span class="tr">Profesyonel bakıcılar detaylı analizlerle 20'ye kadar hastayı yönetebilir.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TARGET AUDIENCE -->
+    <section class="audience" id="audience">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <span class="en">Who It's For</span>
+                    <span class="tr">Kimler İçin</span>
+                </div>
+                <h2>
+                    <span class="en">Designed for everyone who cares</span>
+                    <span class="tr">Önemseyen herkes için tasarlandı</span>
+                </h2>
+            </div>
+
+            <div class="audience-cards">
+                <div class="audience-card fade-in stagger-1">
+                    <div class="audience-icon">👴</div>
+                    <h3>
+                        <span class="en">For Seniors</span>
+                        <span class="tr">Yaşlılar İçin</span>
+                    </h3>
+                    <p>
+                        <span class="en">Maintain your independence while giving your family peace of mind.</span>
+                        <span class="tr">Ailenize huzur verirken bağımsızlığınızı koruyun.</span>
+                    </p>
+                    <ul>
+                        <li>
+                            <span class="en">Simple one-button interface</span>
+                            <span class="tr">Basit tek butonlu arayüz</span>
+                        </li>
+                        <li>
+                            <span class="en">Large, easy-to-read text</span>
+                            <span class="tr">Büyük, okunması kolay yazı</span>
+                        </li>
+                        <li>
+                            <span class="en">Medication reminders</span>
+                            <span class="tr">İlaç hatırlatıcıları</span>
+                        </li>
+                        <li>
+                            <span class="en">Emergency SOS button</span>
+                            <span class="tr">Acil durum SOS butonu</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="audience-card fade-in stagger-2">
+                    <div class="audience-icon">👨‍👩‍👧</div>
+                    <h3>
+                        <span class="en">For Families</span>
+                        <span class="tr">Aileler İçin</span>
+                    </h3>
+                    <p>
+                        <span class="en">Stay connected with elderly parents, even from miles away.</span>
+                        <span class="tr">Kilometrelerce uzakta bile yaşlı anne babanızla bağlantıda kalın.</span>
+                    </p>
+                    <ul>
+                        <li>
+                            <span class="en">Real-time status updates</span>
+                            <span class="tr">Gerçek zamanlı durum güncellemeleri</span>
+                        </li>
+                        <li>
+                            <span class="en">Instant miss notifications</span>
+                            <span class="tr">Anlık kaçırma bildirimleri</span>
+                        </li>
+                        <li>
+                            <span class="en">Family group management</span>
+                            <span class="tr">Aile grubu yönetimi</span>
+                        </li>
+                        <li>
+                            <span class="en">Location sharing</span>
+                            <span class="tr">Konum paylaşımı</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="audience-card fade-in stagger-3">
+                    <div class="audience-icon">👩‍⚕️</div>
+                    <h3>
+                        <span class="en">For Caregivers</span>
+                        <span class="tr">Bakıcılar İçin</span>
+                    </h3>
+                    <p>
+                        <span class="en">Professional tools for managing multiple patients efficiently.</span>
+                        <span class="tr">Birden fazla hastayı verimli bir şekilde yönetmek için profesyonel araçlar.</span>
+                    </p>
+                    <ul>
+                        <li>
+                            <span class="en">Manage up to 20 patients</span>
+                            <span class="tr">20'ye kadar hasta yönetin</span>
+                        </li>
+                        <li>
+                            <span class="en">Medication tracking & reports</span>
+                            <span class="tr">İlaç takibi ve raporları</span>
+                        </li>
+                        <li>
+                            <span class="en">Priority 24/7 support</span>
+                            <span class="tr">7/24 öncelikli destek</span>
+                        </li>
+                        <li>
+                            <span class="en">Professional dashboard</span>
+                            <span class="tr">Profesyonel panel</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="roadmap" id="roadmap">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <span class="en">Roadmap</span>
+                    <span class="tr">Yol Haritası</span>
+                </div>
+                <h2>
+                    <span class="en">Our journey to 50,000 users</span>
+                    <span class="tr">50.000 kullanıcıya yolculuğumuz</span>
+                </h2>
+                <p>
+                    <span class="en">Transparent milestones for 2026-2027</span>
+                    <span class="tr">2026-2027 için şeffaf kilometre taşları</span>
+                </p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item completed">
+                    <div class="timeline-date">
+                        <span>Q1 2026</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>
+                            <span class="en">✅ MVP Launch</span>
+                            <span class="tr">✅ MVP Lansmanı</span>
+                        </h4>
+                        <p>
+                            <span class="en">iOS & Android release, core check-in features, 5 language support</span>
+                            <span class="tr">iOS ve Android yayını, temel check-in özellikleri, 5 dil desteği</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span>Q2 2026</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>
+                            <span class="en">🔄 Group Features</span>
+                            <span class="tr">🔄 Grup Özellikleri</span>
+                        </h4>
+                        <p>
+                            <span class="en">Group messaging, family dashboard, wellness reminders</span>
+                            <span class="tr">Grup mesajlaşma, aile paneli, sağlık hatırlatıcıları</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span>Q3 2026</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>
+                            <span class="en">⌚ Wearable Integration</span>
+                            <span class="tr">⌚ Giyilebilir Entegrasyon</span>
+                        </h4>
+                        <p>
+                            <span class="en">Apple Watch & WearOS support, health data sync</span>
+                            <span class="tr">Apple Watch ve WearOS desteği, sağlık verisi senkronizasyonu</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span>Q4 2026</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>
+                            <span class="en">🏥 Healthcare API</span>
+                            <span class="tr">🏥 Sağlık Kuruluşları API</span>
+                        </h4>
+                        <p>
+                            <span class="en">Integration with hospitals and care facilities</span>
+                            <span class="tr">Hastaneler ve bakım tesisleri ile entegrasyon</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span>Q1 2027</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>
+                            <span class="en">🌍 Europe Expansion</span>
+                            <span class="tr">🌍 Avrupa Genişlemesi</span>
+                        </h4>
+                        <p>
+                            <span class="en">GDPR compliant launch in EU markets, 10+ languages</span>
+                            <span class="tr">AB pazarlarında GDPR uyumlu lansman, 10+ dil</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">
+                        <span>Q2-Q4 2027</span>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>
+                            <span class="en">🤖 AI & Telehealth</span>
+                            <span class="tr">🤖 AI ve Telehealth</span>
+                        </h4>
+                        <p>
+                            <span class="en">AI health analytics, telehealth integration, 50K user milestone</span>
+                            <span class="tr">AI sağlık analitiği, telehealth entegrasyonu, 50K kullanıcı hedefi</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <span class="en">Pricing</span>
+                    <span class="tr">Fiyatlandırma</span>
+                </div>
+                <h2>
+                    <span class="en">Simple, transparent pricing</span>
+                    <span class="tr">Basit, şeffaf fiyatlandırma</span>
+                </h2>
+                <p>
+                    <span class="en">Start free, upgrade when you need more</span>
+                    <span class="tr">Ücretsiz başla, daha fazlasına ihtiyaç duyduğunda yükselt</span>
+                </p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in stagger-1">
+                    <div class="pricing-header">
+                        <h3>Free</h3>
+                        <div class="price">$0<span>/mo</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <span class="en">1 trusted contact</span>
+                            <span class="tr">1 güvenilir kişi</span>
+                        </li>
+                        <li>
+                            <span class="en">Daily check-ins</span>
+                            <span class="tr">Günlük check-in</span>
+                        </li>
+                        <li>
+                            <span class="en">Basic SOS alerts</span>
+                            <span class="tr">Temel SOS uyarıları</span>
+                        </li>
+                        <li>
+                            <span class="en">1 daily reminder</span>
+                            <span class="tr">1 günlük hatırlatma</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">
+                        <span class="en">Get Started</span>
+                        <span class="tr">Başla</span>
+                    </a>
+                </div>
+
+                <div class="pricing-card popular fade-in stagger-2">
+                    <div class="pricing-badge">
+                        <span class="en">Popular</span>
+                        <span class="tr">Popüler</span>
+                    </div>
+                    <div class="pricing-header">
+                        <h3>Premium</h3>
+                        <div class="price">$5.99<span>/mo</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <span class="en">10 trusted contacts</span>
+                            <span class="tr">10 güvenilir kişi</span>
+                        </li>
+                        <li>
+                            <span class="en">Unlimited pings</span>
+                            <span class="tr">Sınırsız ping</span>
+                        </li>
+                        <li>
+                            <span class="en">2 groups (10 members)</span>
+                            <span class="tr">2 grup (10 üye)</span>
+                        </li>
+                        <li>
+                            <span class="en">Location sharing</span>
+                            <span class="tr">Konum paylaşımı</span>
+                        </li>
+                        <li>
+                            <span class="en">10 medication reminders</span>
+                            <span class="tr">10 ilaç hatırlatıcısı</span>
+                        </li>
+                        <li>
+                            <span class="en">No ads</span>
+                            <span class="tr">Reklamsız</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">
+                        <span class="en">Start Free Trial</span>
+                        <span class="tr">Ücretsiz Dene</span>
+                    </a>
+                </div>
+
+                <div class="pricing-card fade-in stagger-3">
+                    <div class="pricing-header">
+                        <h3>Family</h3>
+                        <div class="price">$14.99<span>/mo</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <span class="en">Up to 10 family members</span>
+                            <span class="tr">10 aile üyesine kadar</span>
+                        </li>
+                        <li>
+                            <span class="en">Each gets Premium</span>
+                            <span class="tr">Her biri Premium alır</span>
+                        </li>
+                        <li>
+                            <span class="en">Shared family group</span>
+                            <span class="tr">Paylaşılan aile grubu</span>
+                        </li>
+                        <li>
+                            <span class="en">Family dashboard</span>
+                            <span class="tr">Aile paneli</span>
+                        </li>
+                        <li>
+                            <span class="en">Priority support</span>
+                            <span class="tr">Öncelikli destek</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">
+                        <span class="en">Choose Family</span>
+                        <span class="tr">Aile Seç</span>
+                    </a>
+                </div>
+
+                <div class="pricing-card fade-in stagger-4">
+                    <div class="pricing-header">
+                        <h3>Caregiver</h3>
+                        <div class="price">$29.99<span>/mo</span></div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>
+                            <span class="en">Up to 20 patients</span>
+                            <span class="tr">20 hastaya kadar</span>
+                        </li>
+                        <li>
+                            <span class="en">3 contacts per patient</span>
+                            <span class="tr">Hasta başı 3 kişi</span>
+                        </li>
+                        <li>
+                            <span class="en">Unlimited medications</span>
+                            <span class="tr">Sınırsız ilaç</span>
+                        </li>
+                        <li>
+                            <span class="en">Reports & analytics</span>
+                            <span class="tr">Raporlar ve analizler</span>
+                        </li>
+                        <li>
+                            <span class="en">24/7 priority support</span>
+                            <span class="tr">7/24 öncelikli destek</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">
+                        <span class="en">Contact Sales</span>
+                        <span class="tr">Satışla İletişim</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INVESTOR SECTION -->
+    <section class="investor" id="investor">
+        <div class="container">
+            <div class="investor-content">
+                <div class="investor-info fade-in">
+                    <div class="section-tag">
+                        <span class="en">For Investors</span>
+                        <span class="tr">Yatırımcılar İçin</span>
+                    </div>
+                    <h2>
+                        <span class="en">Join our mission to keep families connected</span>
+                        <span class="tr">Aileleri bağlı tutma misyonumuza katılın</span>
+                    </h2>
+                    <p>
+                        <span class="en">We're raising funds to scale SafePing globally and reach 50,000 users in 36 months.</span>
+                        <span class="tr">SafePing'i küresel ölçekte büyütmek ve 36 ayda 50.000 kullanıcıya ulaşmak için fon topluyoruz.</span>
+                    </p>
+
+                    <div class="projection-card">
+                        <h4>
+                            📈 
+                            <span class="en">Revenue Projection (36 months)</span>
+                            <span class="tr">Gelir Projeksiyonu (36 ay)</span>
+                        </h4>
+                        <table class="projection-table">
+                            <tr>
+                                <td>
+                                    <span class="en">Year 1</span>
+                                    <span class="tr">1. Yıl</span>
+                                </td>
+                                <td>8,000 users → $30K MRR</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="en">Year 2</span>
+                                    <span class="tr">2. Yıl</span>
+                                </td>
+                                <td>28,000 users → $150K MRR</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="en">Year 3</span>
+                                    <span class="tr">3. Yıl</span>
+                                </td>
+                                <td>50,000 users → $350K MRR</td>
+                            </tr>
+                            <tr style="border-bottom: none; font-weight: 700;">
+                                <td>
+                                    <span class="en">Total 3-Year Revenue</span>
+                                    <span class="tr">Toplam 3 Yıl Gelir</span>
+                                </td>
+                                <td style="color: var(--accent);">~$530,000</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="refund-notice">
+                        <h4>
+                            🛡️ 
+                            <span class="en">Investor Protection</span>
+                            <span class="tr">Yatırımcı Koruması</span>
+                        </h4>
+                        <p>
+                            <span class="en">If we don't reach 50,000 active users by month 36, investors can request a refund of up to 80% of their investment. Full transparency, full accountability.</span>
+                            <span class="tr">36. aya kadar 50.000 aktif kullanıcıya ulaşamazsak, yatırımcılar yatırımlarının %80'ine kadar iade talep edebilir. Tam şeffaflık, tam hesap verebilirlik.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="investor-form-card fade-in stagger-2">
+                    <h3>
+                        <span class="en">Become an Investor</span>
+                        <span class="tr">Yatırımcı Olun</span>
+                    </h3>
+                    <p>
+                        <span class="en">Interested in joining our journey? Let's talk.</span>
+                        <span class="tr">Yolculuğumuza katılmak ister misiniz? Konuşalım.</span>
+                    </p>
+
+                    <form id="investor-form">
+                        <div class="form-group">
+                            <label>
+                                <span class="en">Full Name *</span>
+                                <span class="tr">Ad Soyad *</span>
+                            </label>
+                            <input type="text" required placeholder="John Doe">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>
+                                <span class="en">Email *</span>
+                                <span class="tr">E-posta *</span>
+                            </label>
+                            <input type="email" required placeholder="john@example.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <span class="en">Investment Interest</span>
+                                <span class="tr">Yatırım İlgisi</span>
+                            </label>
+                            <select>
+                                <option value="">Select range / Aralık seçin</option>
+                                <option value="10k-25k">$10,000 - $25,000</option>
+                                <option value="25k-50k">$25,000 - $50,000</option>
+                                <option value="50k-100k">$50,000 - $100,000</option>
+                                <option value="100k+">$100,000+</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <span class="en">Message (Optional)</span>
+                                <span class="tr">Mesaj (İsteğe Bağlı)</span>
+                            </label>
+                            <textarea placeholder="Tell us about yourself... / Kendinizden bahsedin..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                            <span class="en">Submit Interest</span>
+                            <span class="tr">İlgi Bildir</span>
+                            →
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">
+                    <span class="en">Testimonials</span>
+                    <span class="tr">Kullanıcı Yorumları</span>
+                </div>
+                <h2>
+                    <span class="en">Loved by families everywhere</span>
+                    <span class="tr">Her yerde aileler tarafından seviliyor</span>
+                </h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in stagger-1">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        <span class="en">"Finally, peace of mind about my mother who lives alone. The daily check-in is so simple she actually uses it!"</span>
+                        <span class="tr">"Sonunda yalnız yaşayan annem için huzur. Günlük check-in o kadar basit ki gerçekten kullanıyor!"</span>
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">👨</div>
+                        <div class="testimonial-author-info">
+                            <strong>Mehmet Y.</strong>
+                            <span>Istanbul, Turkey</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in stagger-2">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        <span class="en">"As a home care nurse, SafePing helps me monitor all my patients efficiently. The medication reminders are a lifesaver."</span>
+                        <span class="tr">"Evde bakım hemşiresi olarak SafePing tüm hastalarımı verimli bir şekilde izlememe yardımcı oluyor. İlaç hatırlatıcıları hayat kurtarıcı."</span>
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">👩</div>
+                        <div class="testimonial-author-info">
+                            <strong>Sarah M.</strong>
+                            <span>Berlin, Germany</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in stagger-3">
+                    <div class="testimonial-stars">★★★★★</div>
+                    <p class="testimonial-text">
+                        <span class="en">"My kids set this up for me and I love it. Just one button tap and they know I'm okay. No complicated apps!"</span>
+                        <span class="tr">"Çocuklarım bunu benim için kurdu ve bayıldım. Sadece bir butona basıyorum ve iyi olduğumu biliyorlar. Karmaşık uygulamalar yok!"</span>
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">👵</div>
+                        <div class="testimonial-author-info">
+                            <strong>Ayşe H.</strong>
+                            <span>Ankara, Turkey</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">FAQ</div>
+                <h2>
+                    <span class="en">Frequently asked questions</span>
+                    <span class="tr">Sıkça sorulan sorular</span>
+                </h2>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="en">Is SafePing free to use?</span>
+                        <span class="tr">SafePing ücretsiz mi?</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            <span class="en">Yes! SafePing offers a free plan with essential features including daily check-ins, 1 trusted contact, and basic SOS alerts. Premium features are available for $5.99/month.</span>
+                            <span class="tr">Evet! SafePing, günlük check-in'ler, 1 güvenilir kişi ve temel SOS uyarıları dahil olmak üzere temel özelliklerle ücretsiz bir plan sunuyor. Premium özellikler aylık $5.99'a sunuluyor.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="en">What happens if someone misses a check-in?</span>
+                        <span class="tr">Biri check-in'i kaçırırsa ne olur?</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            <span class="en">If a check-in is missed, SafePing sends gentle reminders at 2, 6, and 24 hours. After 24 hours without a check-in, all trusted contacts are automatically notified so they can reach out.</span>
+                            <span class="tr">Check-in kaçırılırsa, SafePing 2, 6 ve 24 saatte nazik hatırlatmalar gönderir. Check-in olmadan 24 saat sonra, ulaşabilmeleri için tüm güvenilir kişilere otomatik olarak bildirim gönderilir.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="en">Is my location data private?</span>
+                        <span class="tr">Konum verilerim gizli mi?</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            <span class="en">Absolutely. Location is only shared with your trusted contacts when you trigger SOS or miss a check-in (if you've enabled this feature). We never sell or share your data with third parties.</span>
+                            <span class="tr">Kesinlikle. Konum yalnızca SOS tetiklediğinizde veya check-in'i kaçırdığınızda (bu özelliği etkinleştirdiyseniz) güvenilir kişilerinizle paylaşılır. Verilerinizi asla üçüncü taraflarla satmaz veya paylaşmayız.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="en">Does SafePing work internationally?</span>
+                        <span class="tr">SafePing uluslararası çalışıyor mu?</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            <span class="en">Yes! SafePing works anywhere with an internet connection. We support 5 languages (English, Turkish, Spanish, German, Japanese) with more coming soon.</span>
+                            <span class="tr">Evet! SafePing internet bağlantısı olan her yerde çalışır. 5 dili destekliyoruz (İngilizce, Türkçe, İspanyolca, Almanca, Japonca) ve yakında daha fazlası gelecek.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="en">Can I cancel my subscription anytime?</span>
+                        <span class="tr">Aboneliğimi istediğim zaman iptal edebilir miyim?</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            <span class="en">Yes, you can cancel your subscription at any time. Your premium features will remain active until the end of your billing period, then you'll be switched to the free plan.</span>
+                            <span class="tr">Evet, aboneliğinizi istediğiniz zaman iptal edebilirsiniz. Premium özellikleriniz fatura döneminizin sonuna kadar aktif kalacak, ardından ücretsiz plana geçirileceksiniz.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span class="en">What's the investor refund policy?</span>
+                        <span class="tr">Yatırımcı iade politikası nedir?</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            <span class="en">If SafePing doesn't reach 50,000 active users by month 36, investors can request a refund of up to 80% of their initial investment. This refund guarantee demonstrates our confidence in our growth plan.</span>
+                            <span class="tr">SafePing 36. aya kadar 50.000 aktif kullanıcıya ulaşamazsa, yatırımcılar ilk yatırımlarının %80'ine kadar iade talep edebilir. Bu iade garantisi, büyüme planımıza olan güvenimizi göstermektedir.</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / CTA -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>
+                <span class="en">Ready to keep your family safe?</span>
+                <span class="tr">Ailenizi güvende tutmaya hazır mısınız?</span>
+            </h2>
+            <p>
+                <span class="en">Join thousands of families who trust SafePing for daily peace of mind. Get notified when we launch.</span>
+                <span class="tr">Günlük huzur için SafePing'e güvenen binlerce aileye katılın. Lansman olduğunda haberdar olun.</span>
+            </p>
+
+            <form class="contact-form" id="contact-form">
+                <input type="email" placeholder="Enter your email / E-postanızı girin" required>
+                <button type="submit" class="btn btn-accent">
+                    <span class="en">Notify Me</span>
+                    <span class="tr">Bana Haber Ver</span>
+                </button>
+            </form>
+
+            <div class="store-buttons">
+                <a href="#" class="store-btn">
+                    <span class="icon">🍎</span>
+                    <span class="text">
+                        <small>
+                            <span class="en">Coming soon on</span>
+                            <span class="tr">Yakında</span>
+                        </small>
+                        <strong>App Store</strong>
+                    </span>
+                </a>
+                <a href="#" class="store-btn">
+                    <span class="icon">▶️</span>
+                    <span class="text">
+                        <small>
+                            <span class="en">Coming soon on</span>
+                            <span class="tr">Yakında</span>
+                        </small>
+                        <strong>Google Play</strong>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <div class="logo-icon">🛡️</div>
+                        SafePing
+                    </a>
+                    <p>
+                        <span class="en">Daily check-ins for peace of mind. Keeping families connected, everywhere.</span>
+                        <span class="tr">Huzur için günlük check-in'ler. Aileleri her yerde bağlı tutuyor.</span>
+                    </p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>
+                        <span class="en">Product</span>
+                        <span class="tr">Ürün</span>
+                    </h4>
+                    <ul>
+                        <li><a href="#features">
+                            <span class="en">Features</span>
+                            <span class="tr">Özellikler</span>
+                        </a></li>
+                        <li><a href="#pricing">
+                            <span class="en">Pricing</span>
+                            <span class="tr">Fiyatlar</span>
+                        </a></li>
+                        <li><a href="#roadmap">
+                            <span class="en">Roadmap</span>
+                            <span class="tr">Yol Haritası</span>
+                        </a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>
+                        <span class="en">Company</span>
+                        <span class="tr">Şirket</span>
+                    </h4>
+                    <ul>
+                        <li><a href="#investor">
+                            <span class="en">Investors</span>
+                            <span class="tr">Yatırımcılar</span>
+                        </a></li>
+                        <li><a href="#">
+                            <span class="en">About Us</span>
+                            <span class="tr">Hakkımızda</span>
+                        </a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">
+                            <span class="en">Contact</span>
+                            <span class="tr">İletişim</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>
+                        <span class="en">Legal</span>
+                        <span class="tr">Yasal</span>
+                    </h4>
+                    <ul>
+                        <li><a href="/privacy">
+                            <span class="en">Privacy Policy</span>
+                            <span class="tr">Gizlilik Politikası</span>
+                        </a></li>
+                        <li><a href="/terms">
+                            <span class="en">Terms of Service</span>
+                            <span class="tr">Kullanım Şartları</span>
+                        </a></li>
+                        <li><a href="#">
+                            <span class="en">Cookie Policy</span>
+                            <span class="tr">Çerez Politikası</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>© 2026 SafePing. All rights reserved.</span>
+                <div class="social-links">
+                    <a href="#">𝕏</a>
+                    <a href="#">in</a>
+                    <a href="#">📘</a>
+                    <a href="#">📸</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language Toggle
+        const langBtns = document.querySelectorAll('.lang-btn');
+        const html = document.documentElement;
+
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+                html.dataset.lang = lang;
+                langBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Update page title
+                document.title = lang === 'tr' 
+                    ? 'SafePing - Huzur için Günlük Check-in' 
+                    : 'SafePing - Daily Check-in for Peace of Mind';
+            });
+        });
+
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submissions
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = e.target.querySelector('input').value;
+            alert(html.dataset.lang === 'tr' 
+                ? `Teşekkürler! ${email} adresine lansman bilgisi göndereceğiz.`
+                : `Thanks! We'll notify ${email} when we launch.`);
+            e.target.reset();
+        });
+
+        document.getElementById('investor-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert(html.dataset.lang === 'tr' 
+                ? 'Teşekkürler! En kısa sürede sizinle iletişime geçeceğiz.'
+                : 'Thanks for your interest! We\'ll be in touch soon.');
+            e.target.reset();
+        });
+
+        // Check-in button animation
+        const checkinBtn = document.querySelector('.checkin-button');
+        if (checkinBtn) {
+            checkinBtn.addEventListener('click', () => {
+                checkinBtn.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    checkinBtn.style.transform = 'scale(1.05)';
+                    checkinBtn.innerHTML = `
+                        <span class="icon">✓</span>
+                        <span class="text">
+                            <span class="en">Checked In!</span>
+                            <span class="tr">Check-in Yapıldı!</span>
+                        </span>
+                    `;
+                    checkinBtn.style.background = 'linear-gradient(145deg, #48bb78, #38a169)';
+                }, 150);
+                setTimeout(() => {
+                    checkinBtn.style.transform = 'scale(1)';
+                }, 300);
+            });
+        }
+
+        // Auto-detect browser language
+        const browserLang = navigator.language || navigator.userLanguage;
+        if (browserLang.startsWith('tr')) {
+            html.dataset.lang = 'tr';
+            langBtns.forEach(b => {
+                b.classList.toggle('active', b.dataset.lang === 'tr');
+            });
+        }
+    </script>
+</body>
+</html>

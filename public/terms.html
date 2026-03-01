@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafePing - Terms of Service / Kullanım Koşulları</title>
+    <meta name="description" content="SafePing Terms of Service - Rules and guidelines for using the SafePing application.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1a365d; --primary-light: #2c5282;
+            --secondary: #e53e3e; --accent: #38b2ac; --accent-light: #81e6d9;
+            --bg-cream: #fefcf8; --bg-warm: #fdf6ec;
+            --text-dark: #1a202c; --text-muted: #4a5568; --text-light: #718096;
+            --white: #ffffff; --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --radius: 16px; --radius-sm: 8px; --radius-full: 9999px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg-cream); color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; line-height: 1.2; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        [data-lang="en"] .tr { display: none; }
+        [data-lang="tr"] .en { display: none; }
+
+        header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(254,252,248,0.9); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: all 0.3s ease; }
+        header.scrolled { box-shadow: var(--shadow); }
+        nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 0; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--primary); font-weight: 700; font-size: 1.5rem; }
+        .logo-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--accent), var(--primary)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem; }
+        .nav-right { display: flex; align-items: center; gap: 16px; }
+        .lang-toggle { display: flex; align-items: center; gap: 4px; background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-full); padding: 4px; }
+        .lang-btn { padding: 6px 12px; border: none; background: transparent; border-radius: var(--radius-full); cursor: pointer; font-size: 0.85rem; font-weight: 500; color: var(--text-muted); transition: all 0.2s; }
+        .lang-btn.active { background: var(--primary); color: white; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: var(--radius-full); font-weight: 600; font-size: 0.95rem; text-decoration: none; cursor: pointer; transition: all 0.3s ease; border: none; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+        .page-hero { padding: 120px 0 60px; background: linear-gradient(135deg, #1a2a1a 0%, #2d4a2d 100%); color: white; text-align: center; position: relative; overflow: hidden; }
+        .page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 50% 110%, rgba(56,178,172,0.15) 0%, transparent 70%); }
+        .page-hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: var(--radius-full); padding: 8px 20px; font-size: 0.85rem; color: var(--accent-light); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 24px; position: relative; }
+        .page-hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); color: white; margin-bottom: 16px; position: relative; }
+        .page-hero h1 em { font-style: italic; color: var(--accent-light); }
+        .page-hero p { color: rgba(255,255,255,0.75); font-size: 1.1rem; max-width: 520px; margin: 0 auto 32px; position: relative; }
+        .page-hero-meta { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; position: relative; }
+        .meta-item { text-align: center; }
+        .meta-item strong { display: block; color: var(--accent-light); font-size: 0.95rem; margin-bottom: 2px; }
+        .meta-item span { font-size: 0.8rem; color: rgba(255,255,255,0.55); }
+
+        .legal-content { max-width: 800px; margin: 0 auto; padding: 64px 24px 80px; }
+
+        .toc { background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--accent); border-radius: var(--radius); padding: 28px 32px; margin-bottom: 52px; box-shadow: var(--shadow); }
+        .toc-title { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 16px; font-family: 'DM Sans', sans-serif; }
+        .toc ol { padding-left: 20px; }
+        .toc li { margin-bottom: 10px; }
+        .toc a { color: var(--primary); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        .toc a:hover { color: var(--accent); }
+
+        .section { margin-bottom: 52px; scroll-margin-top: 90px; }
+        .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 2px solid var(--border); }
+        .section-num { width: 38px; height: 38px; background: linear-gradient(135deg, #1a2a1a, #2d4a2d); color: var(--accent-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; font-family: 'DM Sans', sans-serif; }
+        .section h2 { font-family: 'Fraunces', serif; font-size: 1.4rem; color: var(--primary); }
+        .section p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 14px; line-height: 1.75; }
+        .section p:last-child { margin-bottom: 0; }
+        .section strong { color: var(--text-dark); }
+
+        .warning-box { background: #fff5f5; border: 1px solid #feb2b2; border-left: 4px solid var(--secondary); border-radius: var(--radius); padding: 20px 24px; margin: 20px 0; }
+        .warning-box p { color: #742a2a; margin: 0; font-size: 0.9rem; line-height: 1.75; }
+
+        .data-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; margin: 20px 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+        .data-table th { background: #1a2a1a; color: var(--accent-light); padding: 12px 16px; text-align: left; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'DM Sans', sans-serif; }
+        .data-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-muted); vertical-align: top; background: var(--white); }
+        .data-table tr:last-child td { border-bottom: none; }
+        .data-table tr:nth-child(even) td { background: var(--bg-cream); }
+
+        .plan-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin: 20px 0; }
+        .plan-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; text-align: center; box-shadow: var(--shadow); }
+        .plan-name { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+        .plan-desc { font-size: 0.8rem; color: var(--text-light); }
+
+        .contact-cta { background: linear-gradient(135deg, #1a2a1a, #2d4a2d); border-radius: var(--radius); padding: 40px; text-align: center; margin-top: 52px; color: white; box-shadow: var(--shadow-lg); }
+        .contact-cta h3 { font-family: 'Fraunces', serif; font-size: 1.6rem; margin-bottom: 8px; color: white; }
+        .contact-cta p { color: rgba(255,255,255,0.7); margin-bottom: 24px; font-size: 0.9rem; }
+        .contact-cta a.email-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--accent); color: white; padding: 14px 32px; border-radius: var(--radius-full); font-weight: 600; text-decoration: none; font-size: 0.95rem; transition: all 0.2s; }
+        .contact-cta a.email-btn:hover { background: var(--accent-light); color: var(--primary); transform: translateY(-2px); }
+
+        footer { background: var(--primary); color: white; padding: 60px 0 30px; }
+        .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+        .footer-brand .logo { color: white; margin-bottom: 16px; }
+        .footer-brand .logo-icon { background: rgba(255,255,255,0.2); }
+        .footer-brand p { font-size: 0.9rem; opacity: 0.8; max-width: 300px; }
+        .footer-links h4 { font-size: 1rem; margin-bottom: 20px; font-family: 'DM Sans', sans-serif; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .footer-links a:hover { color: white; }
+        .footer-links a.active { color: var(--accent-light); font-weight: 600; }
+        .footer-bottom { padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; opacity: 0.7; }
+        .social-links { display: flex; gap: 16px; }
+        .social-links a { color: white; font-size: 1.2rem; opacity: 0.7; transition: opacity 0.2s; }
+        .social-links a:hover { opacity: 1; }
+
+        @media (max-width: 768px) {
+            .page-hero { padding: 100px 0 48px; }
+            .toc { padding: 20px; }
+            .plan-grid { grid-template-columns: 1fr 1fr; }
+            .footer-content { grid-template-columns: 1fr 1fr; }
+            nav .nav-links { display: none; }
+        }
+        @media (max-width: 480px) {
+            .plan-grid { grid-template-columns: 1fr 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
+            .contact-cta { padding: 28px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="/" class="logo">
+                <div class="logo-icon">🛡️</div>
+                SafePing
+            </a>
+            <div class="nav-right">
+                <div class="lang-toggle">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="tr">TR</button>
+                </div>
+                <a href="/" class="btn btn-primary">
+                    <span class="en">← Home</span>
+                    <span class="tr">← Ana Sayfa</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<section class="page-hero">
+    <div class="container">
+        <div class="page-hero-badge">📄 Terms of Service / Kullanım Koşulları</div>
+        <h1>
+            <span class="en">Simple rules,<br><em>fair terms.</em></span>
+            <span class="tr">Basit kurallar,<br><em>adil koşullar.</em></span>
+        </h1>
+        <p>
+            <span class="en">By using SafePing, you agree to these terms. Written to be clear and human-readable.</span>
+            <span class="tr">SafePing'i kullanarak bu koşulları kabul etmiş olursunuz. Açık ve anlaşılır yazılmıştır.</span>
+        </p>
+        <div class="page-hero-meta">
+            <div class="meta-item">
+                <strong>March 1, 2026</strong>
+                <span class="en">Last Updated</span>
+                <span class="tr">Son Güncelleme</span>
+            </div>
+            <div class="meta-item">
+                <strong>March 1, 2026</strong>
+                <span class="en">Effective Date</span>
+                <span class="tr">Yürürlük Tarihi</span>
+            </div>
+            <div class="meta-item">
+                <strong>SafePing</strong>
+                <span class="en">Developer</span>
+                <span class="tr">Geliştirici</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="legal-content">
+
+    <div class="toc">
+        <div class="toc-title">
+            <span class="en">Table of Contents</span>
+            <span class="tr">İçindekiler</span>
+        </div>
+        <ol>
+            <li><a href="#t1"><span class="en">Acceptance of Terms</span><span class="tr">Şartların Kabulü</span></a></li>
+            <li><a href="#t2"><span class="en">Description of Service</span><span class="tr">Hizmetin Tanımı</span></a></li>
+            <li><a href="#t3"><span class="en">⚠️ Important Disclaimer</span><span class="tr">⚠️ Önemli Uyarı</span></a></li>
+            <li><a href="#t4"><span class="en">User Accounts</span><span class="tr">Kullanıcı Hesapları</span></a></li>
+            <li><a href="#t5"><span class="en">Subscriptions & Billing</span><span class="tr">Abonelikler ve Ödeme</span></a></li>
+            <li><a href="#t6"><span class="en">Acceptable Use</span><span class="tr">Kabul Edilebilir Kullanım</span></a></li>
+            <li><a href="#t7"><span class="en">Intellectual Property</span><span class="tr">Fikri Mülkiyet</span></a></li>
+            <li><a href="#t8"><span class="en">Limitation of Liability</span><span class="tr">Sorumluluk Sınırlaması</span></a></li>
+            <li><a href="#t9"><span class="en">Termination</span><span class="tr">Fesih</span></a></li>
+            <li><a href="#t10"><span class="en">Governing Law</span><span class="tr">Geçerli Hukuk</span></a></li>
+            <li><a href="#t11"><span class="en">Contact</span><span class="tr">İletişim</span></a></li>
+        </ol>
+    </div>
+
+    <div class="section" id="t1">
+        <div class="section-header"><div class="section-num">01</div><h2><span class="en">Acceptance of Terms</span><span class="tr">Şartların Kabulü</span></h2></div>
+        <p class="en">By downloading, installing, or using SafePing, you agree to be bound by these Terms of Service. If you do not agree, please do not use the application. These terms apply to all users including free, premium, family, and caregiver accounts.</p>
+        <p class="tr">SafePing'i indirerek, kurarak veya kullanarak bu Kullanım Koşullarını kabul etmiş olursunuz. Kabul etmiyorsanız lütfen uygulamayı kullanmayınız. Bu koşullar ücretsiz, premium, aile ve bakıcı hesapları dahil tüm kullanıcılar için geçerlidir.</p>
+    </div>
+
+    <div class="section" id="t2">
+        <div class="section-header"><div class="section-num">02</div><h2><span class="en">Description of Service</span><span class="tr">Hizmetin Tanımı</span></h2></div>
+        <p class="en">SafePing is a personal safety check-in application that allows users to schedule periodic wellness check-ins, designate trusted contacts, and coordinate with caregivers. The service includes: scheduled check-in reminders via push notification, missed check-in escalation to trusted contacts, caregiver coordination tools, family wellness pings, and medication reminders (premium plans).</p>
+        <p class="tr">SafePing; kullanıcıların düzenli sağlık check-in'leri planlamasına, güvenilir kişiler belirlemesine ve bakıcılarla koordinasyon sağlamasına olanak tanıyan kişisel güvenlik uygulamasıdır. Hizmet şunları kapsar: push bildirim aracılığıyla zamanlanmış check-in hatırlatıcıları, kaçırılan check-in'lerin iletilmesi, bakıcı koordinasyon araçları, aile ping'leri ve ilaç hatırlatıcıları (premium planlar).</p>
+    </div>
+
+    <div class="section" id="t3">
+        <div class="section-header"><div class="section-num">03</div><h2><span class="en">⚠️ Important Disclaimer</span><span class="tr">⚠️ Önemli Uyarı</span></h2></div>
+        <div class="warning-box">
+            <p class="en"><strong>SafePing is NOT an emergency service.</strong> It is not a substitute for emergency services (112, 911, or local equivalents). In case of a medical emergency or immediate danger, always contact emergency services directly. SafePing does not provide real-time location tracking or emergency dispatch. Missed check-in notifications are informational only and may be delayed.</p>
+            <p class="tr"><strong>SafePing bir acil durum servisi DEĞİLDİR.</strong> 112 veya yerel acil servislerin yerini tutmaz. Tıbbi acil durum veya anlık tehlike halinde doğrudan acil servisleri arayın. SafePing gerçek zamanlı konum takibi veya acil müdahale hizmeti sunmaz. Kaçırılan check-in bildirimleri yalnızca bilgi amaçlıdır ve gecikebilir.</p>
+        </div>
+        <p class="en">SafePing should be used as a supplementary wellness tool, not as a sole safety mechanism. We strongly encourage all users to maintain traditional emergency contact methods.</p>
+        <p class="tr">SafePing, tek başına bir güvenlik mekanizması olarak değil, tamamlayıcı bir sağlık aracı olarak kullanılmalıdır. Tüm kullanıcılarımızın geleneksel acil iletişim yöntemlerini de sürdürmesini tavsiye ederiz.</p>
+    </div>
+
+    <div class="section" id="t4">
+        <div class="section-header"><div class="section-num">04</div><h2><span class="en">User Accounts</span><span class="tr">Kullanıcı Hesapları</span></h2></div>
+        <p class="en">You must provide accurate and complete information when creating an account. You are responsible for maintaining account security and for all activities under your account. You must be at least 13 years of age. If under 18, use the app only with parental supervision. You may not share accounts or use another person's account without their permission.</p>
+        <p class="tr">Hesap oluştururken doğru ve eksiksiz bilgi sağlamakla yükümlüsünüz. Hesap güvenliğinizden ve hesabınız altında gerçekleşen tüm işlemlerden siz sorumlusunuz. En az 13 yaşında olmanız gerekmektedir. 18 yaşından küçükseniz yalnızca ebeveyn gözetiminde kullanın. Hesapları paylaşmayın veya izinsiz başkasının hesabını kullanmayın.</p>
+    </div>
+
+    <div class="section" id="t5">
+        <div class="section-header"><div class="section-num">05</div><h2><span class="en">Subscriptions & Billing</span><span class="tr">Abonelikler ve Ödeme</span></h2></div>
+        <p class="en">SafePing offers the following plans:</p>
+        <p class="tr">SafePing aşağıdaki planları sunmaktadır:</p>
+        <div class="plan-grid">
+            <div class="plan-card"><div class="plan-name"><span class="en">Free</span><span class="tr">Ücretsiz</span></div><div class="plan-desc"><span class="en">Basic check-ins</span><span class="tr">Temel check-in</span></div></div>
+            <div class="plan-card"><div class="plan-name">Premium</div><div class="plan-desc"><span class="en">Enhanced features</span><span class="tr">Gelişmiş özellikler</span></div></div>
+            <div class="plan-card"><div class="plan-name"><span class="en">Family</span><span class="tr">Aile</span></div><div class="plan-desc"><span class="en">Multi-user</span><span class="tr">Çok kullanıcı</span></div></div>
+            <div class="plan-card"><div class="plan-name"><span class="en">Caregiver</span><span class="tr">Bakıcı</span></div><div class="plan-desc"><span class="en">Professional</span><span class="tr">Profesyonel</span></div></div>
+        </div>
+        <p class="en">Subscriptions are billed through the App Store (Apple) or Google Play. Payments are processed by Apple or Google. Subscriptions auto-renew unless cancelled at least 24 hours before the end of the current period. Refunds are subject to App Store/Google Play policies.</p>
+        <p class="tr">Abonelikler App Store (Apple) veya Google Play üzerinden faturalandırılır. Ödemeler Apple veya Google tarafından işlenir. Dönem bitiminden en az 24 saat önce iptal edilmezse otomatik olarak yenilenir. İadeler App Store/Google Play iade politikalarına tabidir.</p>
+    </div>
+
+    <div class="section" id="t6">
+        <div class="section-header"><div class="section-num">06</div><h2><span class="en">Acceptable Use</span><span class="tr">Kabul Edilebilir Kullanım</span></h2></div>
+        <p class="en">You agree not to use SafePing to: harass, stalk, or monitor individuals without their explicit consent; provide false information that could endanger others; gain unauthorized access to accounts or data; use the service for any unlawful purpose; circumvent security features; or impersonate another person.</p>
+        <p class="tr">SafePing'i şu amaçlarla kullanamazsınız: açık rızaları olmadan bireyleri taciz etmek, takip veya izlemek; başkalarını tehlikeye atabilecek yanlış bilgi vermek; yetkisiz erişim sağlamaya çalışmak; yasadışı amaçlar için kullanmak; güvenlik özelliklerini atlatmak; başka birini taklit etmek.</p>
+        <p class="en"><strong>Trusted contacts must consent</strong> to receiving alerts. Adding someone without their knowledge is a violation of these terms.</p>
+        <p class="tr"><strong>Güvenilir kişiler uyarı almayı kabul etmiş olmalıdır.</strong> Birini bilgisi olmadan eklemek bu koşulların ihlalidir.</p>
+    </div>
+
+    <div class="section" id="t7">
+        <div class="section-header"><div class="section-num">07</div><h2><span class="en">Intellectual Property</span><span class="tr">Fikri Mülkiyet</span></h2></div>
+        <p class="en">SafePing, its logo, design, and all associated content are the intellectual property of SafePing. You may not copy, modify, distribute, or create derivative works without express written permission. Your personal data remains yours — by using the service you grant SafePing a limited license to process it solely for the purpose of providing the service.</p>
+        <p class="tr">SafePing, logosu, tasarımı ve tüm ilgili içerikleri SafePing'in fikri mülkiyetidir. Açık yazılı izin olmaksızın kopyalayamaz, değiştiremez veya dağıtamazsınız. Kişisel verileriniz size aittir — hizmeti kullanarak SafePing'e, yalnızca hizmeti sunmak amacıyla işlemek için sınırlı lisans vermektesiniz.</p>
+    </div>
+
+    <div class="section" id="t8">
+        <div class="section-header"><div class="section-num">08</div><h2><span class="en">Limitation of Liability</span><span class="tr">Sorumluluk Sınırlaması</span></h2></div>
+        <p class="en">SafePing is provided "as is" without warranties. To the maximum extent permitted by law, SafePing shall not be liable for: any indirect or consequential damages; failure to deliver timely notifications due to network issues or device settings; actions or inactions of trusted contacts or caregivers; any harm resulting from reliance on the app as an emergency tool. Our total liability shall not exceed the amount you paid in the 12 months preceding the claim.</p>
+        <p class="tr">SafePing herhangi bir garanti verilmeksizin "olduğu gibi" sunulmaktadır. Yasaların izin verdiği ölçüde SafePing şunlardan sorumlu tutulamaz: dolaylı veya sonuç olarak ortaya çıkan zararlar; ağ sorunları nedeniyle bildirimlerin gecikmesi; güvenilir kişilerin veya bakıcıların eylemleri; uygulamanın acil araç olarak kullanılmasından doğan zararlar. Toplam sorumluluğumuz, son 12 ayda ödediğiniz tutarı aşmayacaktır.</p>
+    </div>
+
+    <div class="section" id="t9">
+        <div class="section-header"><div class="section-num">09</div><h2><span class="en">Termination</span><span class="tr">Fesih</span></h2></div>
+        <p class="en">You may delete your account at any time through app settings. We may suspend or terminate your account for violations of these terms without prior notice. Upon termination, your right to use the service ceases immediately. Data deletion follows the schedule in our Privacy Policy.</p>
+        <p class="tr">Uygulama ayarları aracılığıyla hesabınızı istediğiniz zaman silebilirsiniz. Bu koşulları ihlal etmeniz halinde hesabınızı önceden bildirim yapmaksızın askıya alabilir veya sonlandırabiliriz. Feshin ardından hizmeti kullanma hakkınız derhal sona erer.</p>
+    </div>
+
+    <div class="section" id="t10">
+        <div class="section-header"><div class="section-num">10</div><h2><span class="en">Governing Law</span><span class="tr">Geçerli Hukuk</span></h2></div>
+        <p class="en">These Terms shall be governed by the laws of the Republic of Turkey. Any disputes arising from these terms shall be subject to the jurisdiction of Turkish courts. If any provision is found unenforceable, the remaining provisions continue in full force.</p>
+        <p class="tr">Bu Koşullar Türkiye Cumhuriyeti hukukuna tabidir. Bu koşullardan doğan her türlü uyuşmazlık Türk mahkemelerinin yargı yetkisine tabidir. Herhangi bir hükmün uygulanamaz bulunması halinde geri kalan hükümler yürürlükte kalmaya devam eder.</p>
+    </div>
+
+    <div class="section" id="t11">
+        <div class="section-header"><div class="section-num">11</div><h2><span class="en">Contact</span><span class="tr">İletişim</span></h2></div>
+        <p class="en">For questions about these Terms of Service:</p>
+        <p class="tr">Kullanım Koşullarına ilişkin sorularınız için:</p>
+    </div>
+
+    <div class="contact-cta">
+        <h3><span class="en">Get in touch</span><span class="tr">Bize Ulaşın</span></h3>
+        <p><span class="en">We typically respond within 2 business days.</span><span class="tr">Genellikle 2 iş günü içinde yanıt veriyoruz.</span></p>
+        <a href="mailto:legal@safeping.app" class="email-btn">✉️ legal@safeping.app</a>
+    </div>
+
+</div>
+
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="/" class="logo"><div class="logo-icon">🛡️</div>SafePing</a>
+                <p><span class="en">Daily check-ins for peace of mind. Keeping families connected, everywhere.</span><span class="tr">Huzur için günlük check-in'ler. Aileleri her yerde bağlı tutuyor.</span></p>
+            </div>
+            <div class="footer-links">
+                <h4><span class="en">Product</span><span class="tr">Ürün</span></h4>
+                <ul>
+                    <li><a href="/#features"><span class="en">Features</span><span class="tr">Özellikler</span></a></li>
+                    <li><a href="/#pricing"><span class="en">Pricing</span><span class="tr">Fiyatlar</span></a></li>
+                    <li><a href="/#roadmap"><span class="en">Roadmap</span><span class="tr">Yol Haritası</span></a></li>
+                    <li><a href="/#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4><span class="en">Company</span><span class="tr">Şirket</span></h4>
+                <ul>
+                    <li><a href="/#investor"><span class="en">Investors</span><span class="tr">Yatırımcılar</span></a></li>
+                    <li><a href="/"><span class="en">About Us</span><span class="tr">Hakkımızda</span></a></li>
+                    <li><a href="mailto:hello@safeping.app"><span class="en">Contact</span><span class="tr">İletişim</span></a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4><span class="en">Legal</span><span class="tr">Yasal</span></h4>
+                <ul>
+                    <li><a href="/privacy"><span class="en">Privacy Policy</span><span class="tr">Gizlilik Politikası</span></a></li>
+                    <li><a href="/terms" class="active"><span class="en">Terms of Service</span><span class="tr">Kullanım Şartları</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 SafePing. All rights reserved.</span>
+            <div class="social-links">
+                <a href="#">𝕏</a><a href="#">in</a><a href="#">📘</a><a href="#">📸</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    const langBtns = document.querySelectorAll('.lang-btn');
+    const html = document.documentElement;
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.dataset.lang;
+            html.dataset.lang = lang;
+            langBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
+    });
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 50); });
+    const browserLang = navigator.language || navigator.userLanguage;
+    if (browserLang.startsWith('tr')) {
+        html.dataset.lang = 'tr';
+        langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === 'tr'));
+    }
+</script>
+</body>
+</html>

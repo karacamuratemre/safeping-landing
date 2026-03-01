@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafePing - Privacy Policy / Gizlilik Politikası</title>
+    <meta name="description" content="SafePing Privacy Policy - How we collect, use, and protect your personal information.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #1a365d;
+            --primary-light: #2c5282;
+            --secondary: #e53e3e;
+            --accent: #38b2ac;
+            --accent-light: #81e6d9;
+            --bg-cream: #fefcf8;
+            --bg-warm: #fdf6ec;
+            --text-dark: #1a202c;
+            --text-muted: #4a5568;
+            --text-light: #718096;
+            --white: #ffffff;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            --radius: 16px;
+            --radius-sm: 8px;
+            --radius-full: 9999px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Fraunces', Georgia, serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+        /* Lang toggle */
+        [data-lang="en"] .tr { display: none; }
+        [data-lang="tr"] .en { display: none; }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(254,252,248,0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        header.scrolled { box-shadow: var(--shadow); }
+
+        nav {
+            display: flex; align-items: center;
+            justify-content: space-between; padding: 16px 0;
+        }
+
+        .logo {
+            display: flex; align-items: center; gap: 10px;
+            text-decoration: none; color: var(--primary);
+            font-weight: 700; font-size: 1.5rem;
+        }
+
+        .logo-icon {
+            width: 40px; height: 40px;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 1.2rem;
+        }
+
+        .nav-right { display: flex; align-items: center; gap: 16px; }
+
+        .lang-toggle {
+            display: flex; align-items: center; gap: 4px;
+            background: var(--white); border: 1px solid var(--border);
+            border-radius: var(--radius-full); padding: 4px;
+        }
+
+        .lang-btn {
+            padding: 6px 12px; border: none; background: transparent;
+            border-radius: var(--radius-full); cursor: pointer;
+            font-size: 0.85rem; font-weight: 500; color: var(--text-muted);
+            transition: all 0.2s;
+        }
+        .lang-btn.active { background: var(--primary); color: white; }
+
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 24px; border-radius: var(--radius-full);
+            font-weight: 600; font-size: 0.95rem;
+            text-decoration: none; cursor: pointer;
+            transition: all 0.3s ease; border: none;
+        }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-light); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            padding: 120px 0 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 110%, rgba(56,178,172,0.2) 0%, transparent 70%);
+        }
+        .page-hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius-full);
+            padding: 8px 20px; font-size: 0.85rem;
+            color: var(--accent-light);
+            letter-spacing: 0.05em; text-transform: uppercase;
+            margin-bottom: 24px; position: relative;
+        }
+        .page-hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            color: white; margin-bottom: 16px;
+            position: relative;
+        }
+        .page-hero h1 em { font-style: italic; color: var(--accent-light); }
+        .page-hero p {
+            color: rgba(255,255,255,0.75);
+            font-size: 1.1rem; max-width: 520px;
+            margin: 0 auto 32px; position: relative;
+        }
+        .page-hero-meta {
+            display: flex; justify-content: center;
+            gap: 40px; flex-wrap: wrap; position: relative;
+        }
+        .meta-item { text-align: center; }
+        .meta-item strong { display: block; color: var(--accent-light); font-size: 0.95rem; margin-bottom: 2px; }
+        .meta-item span { font-size: 0.8rem; color: rgba(255,255,255,0.55); }
+
+        /* ===== CONTENT AREA ===== */
+        .legal-content {
+            max-width: 800px; margin: 0 auto;
+            padding: 64px 24px 80px;
+        }
+
+        /* TOC */
+        .toc {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: var(--radius);
+            padding: 28px 32px;
+            margin-bottom: 52px;
+            box-shadow: var(--shadow);
+        }
+        .toc-title {
+            font-size: 0.75rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            color: var(--accent); margin-bottom: 16px;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .toc ol { padding-left: 20px; }
+        .toc li { margin-bottom: 10px; }
+        .toc a {
+            color: var(--primary); text-decoration: none;
+            font-size: 0.9rem; font-weight: 500;
+            transition: color 0.2s;
+        }
+        .toc a:hover { color: var(--accent); }
+
+        /* Sections */
+        .section { margin-bottom: 52px; scroll-margin-top: 90px; }
+
+        .section-header {
+            display: flex; align-items: center;
+            gap: 16px; margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--border);
+        }
+        .section-num {
+            width: 38px; height: 38px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: var(--accent-light);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.75rem; font-weight: 700;
+            flex-shrink: 0; font-family: 'DM Sans', sans-serif;
+        }
+        .section h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.4rem; color: var(--primary);
+        }
+        .section p {
+            color: var(--text-muted); font-size: 0.95rem;
+            margin-bottom: 14px; line-height: 1.75;
+        }
+        .section p:last-child { margin-bottom: 0; }
+        .section strong { color: var(--text-dark); }
+
+        /* Data Table */
+        .data-table {
+            width: 100%; border-collapse: collapse;
+            font-size: 0.875rem; margin: 20px 0;
+            border-radius: var(--radius); overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .data-table th {
+            background: var(--primary); color: var(--accent-light);
+            padding: 12px 16px; text-align: left;
+            font-size: 0.75rem; text-transform: uppercase;
+            letter-spacing: 0.05em; font-family: 'DM Sans', sans-serif;
+        }
+        .data-table td {
+            padding: 12px 16px; border-bottom: 1px solid var(--border);
+            color: var(--text-muted); vertical-align: top;
+            background: var(--white);
+        }
+        .data-table tr:last-child td { border-bottom: none; }
+        .data-table tr:nth-child(even) td { background: var(--bg-cream); }
+
+        /* Tag */
+        .tag {
+            display: inline-block; padding: 2px 10px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem; font-weight: 600;
+        }
+        .tag-accent { background: rgba(56,178,172,0.15); color: #2c7a7b; }
+        .tag-warm { background: rgba(237,137,54,0.15); color: #c05621; }
+
+        /* Warning box */
+        .warning-box {
+            background: #fffbeb;
+            border: 1px solid #f6e05e;
+            border-left: 4px solid #d69e2e;
+            border-radius: var(--radius);
+            padding: 20px 24px; margin: 20px 0;
+        }
+        .warning-box p { color: #744210; margin: 0; font-size: 0.9rem; }
+
+        /* Rights grid */
+        .rights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px; margin: 20px 0;
+        }
+        .right-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 18px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s;
+        }
+        .right-card:hover { transform: translateY(-2px); }
+        .right-icon { font-size: 1.5rem; margin-bottom: 10px; }
+        .right-title { font-size: 0.875rem; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+        .right-desc { font-size: 0.8rem; color: var(--text-light); line-height: 1.5; }
+
+        /* Contact CTA */
+        .contact-cta {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: var(--radius);
+            padding: 40px; text-align: center;
+            margin-top: 52px; color: white;
+            box-shadow: var(--shadow-lg);
+        }
+        .contact-cta h3 {
+            font-family: 'Fraunces', serif;
+            font-size: 1.6rem; margin-bottom: 8px; color: white;
+        }
+        .contact-cta p { color: rgba(255,255,255,0.7); margin-bottom: 24px; font-size: 0.9rem; }
+        .contact-cta a.email-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--accent); color: white;
+            padding: 14px 32px; border-radius: var(--radius-full);
+            font-weight: 600; text-decoration: none;
+            font-size: 0.95rem; transition: all 0.2s;
+        }
+        .contact-cta a.email-btn:hover {
+            background: var(--accent-light); color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary); color: white; padding: 60px 0 30px;
+        }
+        .footer-content {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px; margin-bottom: 40px;
+        }
+        .footer-brand .logo { color: white; margin-bottom: 16px; }
+        .footer-brand .logo-icon { background: rgba(255,255,255,0.2); }
+        .footer-brand p { font-size: 0.9rem; opacity: 0.8; max-width: 300px; }
+        .footer-links h4 { font-size: 1rem; margin-bottom: 20px; font-family: 'DM Sans', sans-serif; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+        .footer-links a:hover { color: white; }
+        .footer-links a.active { color: var(--accent-light); font-weight: 600; }
+        .footer-bottom {
+            padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex; justify-content: space-between;
+            align-items: center; font-size: 0.85rem; opacity: 0.7;
+        }
+        .social-links { display: flex; gap: 16px; }
+        .social-links a { color: white; font-size: 1.2rem; opacity: 0.7; transition: opacity 0.2s; }
+        .social-links a:hover { opacity: 1; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .page-hero { padding: 100px 0 48px; }
+            .page-hero-meta { gap: 24px; }
+            .toc { padding: 20px; }
+            .data-table { font-size: 0.8rem; }
+            .data-table th, .data-table td { padding: 10px 12px; }
+            .rights-grid { grid-template-columns: 1fr 1fr; }
+            .footer-content { grid-template-columns: 1fr 1fr; }
+            nav .nav-links { display: none; }
+        }
+        @media (max-width: 480px) {
+            .rights-grid { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; }
+            .contact-cta { padding: 28px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="container">
+        <nav>
+            <a href="/" class="logo">
+                <div class="logo-icon">🛡️</div>
+                SafePing
+            </a>
+            <div class="nav-right">
+                <div class="lang-toggle">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="tr">TR</button>
+                </div>
+                <a href="/" class="btn btn-primary">
+                    <span class="en">← Home</span>
+                    <span class="tr">← Ana Sayfa</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+    <div class="container">
+        <div class="page-hero-badge">🔒 Privacy Policy / Gizlilik Politikası</div>
+        <h1>
+            <span class="en">Your data,<br><em>your control.</em></span>
+            <span class="tr">Veriniz,<br><em>sizin kontrolünüzde.</em></span>
+        </h1>
+        <p>
+            <span class="en">SafePing is built on a simple promise: we collect only what we need, and nothing more.</span>
+            <span class="tr">SafePing basit bir taahhüt üzerine inşa edilmiştir: yalnızca ihtiyacımız olanı topluyoruz.</span>
+        </p>
+        <div class="page-hero-meta">
+            <div class="meta-item">
+                <strong>March 1, 2026</strong>
+                <span class="en">Last Updated</span>
+                <span class="tr">Son Güncelleme</span>
+            </div>
+            <div class="meta-item">
+                <strong>March 1, 2026</strong>
+                <span class="en">Effective Date</span>
+                <span class="tr">Yürürlük Tarihi</span>
+            </div>
+            <div class="meta-item">
+                <strong>SafePing</strong>
+                <span class="en">Developer</span>
+                <span class="tr">Geliştirici</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTENT -->
+<div class="legal-content">
+
+    <!-- TOC -->
+    <div class="toc">
+        <div class="toc-title">
+            <span class="en">Table of Contents</span>
+            <span class="tr">İçindekiler</span>
+        </div>
+        <ol>
+            <li><a href="#s1"><span class="en">Who We Are</span><span class="tr">Kim Olduğumuz</span></a></li>
+            <li><a href="#s2"><span class="en">Data We Collect</span><span class="tr">Topladığımız Veriler</span></a></li>
+            <li><a href="#s3"><span class="en">How We Use Your Data</span><span class="tr">Verilerinizi Nasıl Kullanıyoruz</span></a></li>
+            <li><a href="#s4"><span class="en">Third-Party Services</span><span class="tr">Üçüncü Taraf Hizmetler</span></a></li>
+            <li><a href="#s5"><span class="en">Data Retention</span><span class="tr">Veri Saklama</span></a></li>
+            <li><a href="#s6"><span class="en">Your Rights</span><span class="tr">Haklarınız (KVKK)</span></a></li>
+            <li><a href="#s7"><span class="en">Children's Privacy</span><span class="tr">Çocukların Gizliliği</span></a></li>
+            <li><a href="#s8"><span class="en">Changes to This Policy</span><span class="tr">Politika Değişiklikleri</span></a></li>
+            <li><a href="#s9"><span class="en">Contact</span><span class="tr">İletişim</span></a></li>
+        </ol>
+    </div>
+
+    <!-- S1 -->
+    <div class="section" id="s1">
+        <div class="section-header">
+            <div class="section-num">01</div>
+            <h2><span class="en">Who We Are</span><span class="tr">Kim Olduğumuz</span></h2>
+        </div>
+        <p class="en">SafePing ("we", "us", "our") is an independent application developed by SafePing. The app is designed to help individuals stay connected with loved ones through periodic check-ins, caregiver coordination, and wellness pings.</p>
+        <p class="tr">SafePing ("biz"), SafePing tarafından geliştirilen bağımsız bir mobil uygulamadır. Uygulama; düzenli check-in'ler, bakıcı koordinasyonu ve aile bildirimleri aracılığıyla sevdiklerinizle bağlantıda kalmanıza yardımcı olmak amacıyla tasarlanmıştır.</p>
+        <p class="en">This Privacy Policy explains how we collect, use, and protect your personal information when you use the SafePing mobile application.</p>
+        <p class="tr">Bu Gizlilik Politikası, SafePing mobil uygulamasını kullandığınızda kişisel bilgilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklamaktadır.</p>
+    </div>
+
+    <!-- S2 -->
+    <div class="section" id="s2">
+        <div class="section-header">
+            <div class="section-num">02</div>
+            <h2><span class="en">Data We Collect</span><span class="tr">Topladığımız Veriler</span></h2>
+        </div>
+        <p class="en">We collect only the minimum data necessary to operate the service:</p>
+        <p class="tr">Yalnızca hizmeti sunmak için gereken minimum veriyi topluyoruz:</p>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th><span class="en">Data</span><span class="tr">Veri</span></th>
+                    <th><span class="en">Purpose</span><span class="tr">Amaç</span></th>
+                    <th><span class="en">Storage</span><span class="tr">Depolama</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong><span class="en">Email & name</span><span class="tr">E-posta ve ad</span></strong></td>
+                    <td><span class="en">Account creation, authentication</span><span class="tr">Hesap oluşturma, kimlik doğrulama</span></td>
+                    <td><span class="tag tag-accent">Firebase Auth</span></td>
+                </tr>
+                <tr>
+                    <td><strong><span class="en">Check-in history</span><span class="tr">Check-in geçmişi</span></strong></td>
+                    <td><span class="en">Status tracking, escalation logic</span><span class="tr">Durum takibi, eskalasyon</span></td>
+                    <td><span class="tag tag-accent">Firestore</span></td>
+                </tr>
+                <tr>
+                    <td><strong><span class="en">FCM push token</span><span class="tr">FCM push token'ı</span></strong></td>
+                    <td><span class="en">Sending reminders & alerts</span><span class="tr">Hatırlatıcı ve uyarı gönderimi</span></td>
+                    <td><span class="tag tag-accent">Firestore</span></td>
+                </tr>
+                <tr>
+                    <td><strong><span class="en">Schedule preferences</span><span class="tr">Zamanlama tercihleri</span></strong></td>
+                    <td><span class="en">Check-in frequency & time settings</span><span class="tr">Check-in sıklığı ve saat ayarları</span></td>
+                    <td><span class="tag tag-accent">Firestore</span></td>
+                </tr>
+                <tr>
+                    <td><strong><span class="en">Invite code</span><span class="tr">Davet kodu</span></strong></td>
+                    <td><span class="en">Connecting trusted contacts</span><span class="tr">Güvenilir kişi bağlantısı</span></td>
+                    <td><span class="tag tag-accent">Firestore</span></td>
+                </tr>
+                <tr>
+                    <td><strong><span class="en">Caregiver links</span><span class="tr">Bakıcı bağlantıları</span></strong></td>
+                    <td><span class="en">Caregiver-patient relationship</span><span class="tr">Bakıcı-hasta ilişkisi</span></td>
+                    <td><span class="tag tag-accent">Firestore</span></td>
+                </tr>
+                <tr>
+                    <td><strong><span class="en">Purchase receipts</span><span class="tr">Satın alma makbuzları</span></strong></td>
+                    <td><span class="en">Subscription verification</span><span class="tr">Abonelik doğrulama</span></td>
+                    <td><span class="tag tag-warm">RevenueCat</span></td>
+                </tr>
+                <tr>
+                    <td><strong><span class="en">Crash & error logs</span><span class="tr">Hata ve çökme logları</span></strong></td>
+                    <td><span class="en">App stability improvement</span><span class="tr">Uygulama stabilitesi</span></td>
+                    <td><span class="tag tag-warm">Sentry</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="en"><strong>We do not collect:</strong> location data, contacts list, microphone, camera, or any data not listed above.</p>
+        <p class="tr"><strong>Toplamadığımız veriler:</strong> konum verisi, rehber, mikrofon, kamera veya yukarıda listelenmeyen herhangi bir veri.</p>
+    </div>
+
+    <!-- S3 -->
+    <div class="section" id="s3">
+        <div class="section-header">
+            <div class="section-num">03</div>
+            <h2><span class="en">How We Use Your Data</span><span class="tr">Verilerinizi Nasıl Kullanıyoruz</span></h2>
+        </div>
+        <p class="en">Your data is used exclusively to provide the SafePing service: sending check-in reminders at your scheduled time, escalating missed check-ins to your trusted contacts, enabling caregiver coordination and family pings, verifying your subscription plan, and diagnosing app crashes.</p>
+        <p class="tr">Verileriniz yalnızca SafePing hizmetini sunmak amacıyla kullanılmaktadır: belirlediğiniz saatte check-in hatırlatıcısı göndermek, kaçırılan check-in'leri güvenilir kişilerinize iletmek, bakıcı koordinasyonu ve aile ping'lerini sağlamak, abonelik planınızı doğrulamak ve uygulama çökmelerini tespit etmek.</p>
+        <p class="en"><strong>We do not sell, rent, or share your personal data</strong> with third parties for advertising or marketing purposes.</p>
+        <p class="tr"><strong>Kişisel verilerinizi reklam veya pazarlama amacıyla</strong> üçüncü taraflara satmıyor, kiralamıyor veya paylaşmıyoruz.</p>
+    </div>
+
+    <!-- S4 -->
+    <div class="section" id="s4">
+        <div class="section-header">
+            <div class="section-num">04</div>
+            <h2><span class="en">Third-Party Services</span><span class="tr">Üçüncü Taraf Hizmetler</span></h2>
+        </div>
+        <p class="en">SafePing uses the following third-party services, each governed by their own privacy policies:</p>
+        <p class="tr">SafePing, her biri kendi gizlilik politikasına tabi olan aşağıdaki üçüncü taraf hizmetleri kullanmaktadır:</p>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th><span class="en">Service</span><span class="tr">Hizmet</span></th>
+                    <th><span class="en">Purpose</span><span class="tr">Amaç</span></th>
+                    <th><span class="en">Privacy Policy</span><span class="tr">Gizlilik Politikası</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Firebase (Google)</strong></td>
+                    <td><span class="en">Auth, database, push notifications</span><span class="tr">Kimlik doğrulama, veritabanı, bildirimler</span></td>
+                    <td><a href="https://firebase.google.com/support/privacy" target="_blank" style="color:var(--accent)">firebase.google.com/support/privacy</a></td>
+                </tr>
+                <tr>
+                    <td><strong>RevenueCat</strong></td>
+                    <td><span class="en">In-app subscription management</span><span class="tr">Uygulama içi abonelik yönetimi</span></td>
+                    <td><a href="https://www.revenuecat.com/privacy" target="_blank" style="color:var(--accent)">revenuecat.com/privacy</a></td>
+                </tr>
+                <tr>
+                    <td><strong>Sentry</strong></td>
+                    <td><span class="en">Crash reporting (no PII sent)</span><span class="tr">Hata raporlama (kişisel veri gönderilmez)</span></td>
+                    <td><a href="https://sentry.io/privacy" target="_blank" style="color:var(--accent)">sentry.io/privacy</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="en">Sentry is configured with <strong>sendDefaultPii: false</strong> — no personally identifiable information is transmitted.</p>
+        <p class="tr">Sentry, <strong>sendDefaultPii: false</strong> yapılandırmasıyla çalışmaktadır — kişisel tanımlanabilir hiçbir bilgi iletilmemektedir.</p>
+    </div>
+
+    <!-- S5 -->
+    <div class="section" id="s5">
+        <div class="section-header">
+            <div class="section-num">05</div>
+            <h2><span class="en">Data Retention</span><span class="tr">Veri Saklama</span></h2>
+        </div>
+        <p class="en">Your data is retained for as long as your account is active. When you delete your account: authentication record is deleted from Firebase Auth, Firestore documents are deleted within 30 days, push tokens are immediately invalidated, and RevenueCat purchase history is retained per Apple/Google requirements.</p>
+        <p class="tr">Verileriniz hesabınız aktif olduğu sürece saklanır. Hesabınızı sildiğinizde: Firebase Auth'taki kimlik kaydınız silinir, Firestore belgeleriniz 30 gün içinde silinir, push token'larınız anında geçersiz kılınır; RevenueCat satın alma geçmişi Apple/Google gereksinimleri doğrultusunda saklanır.</p>
+        <p class="en">To request account deletion, contact us at <strong>privacy@safeping.app</strong>.</p>
+        <p class="tr">Hesap silme talebinde bulunmak için <strong>privacy@safeping.app</strong> adresine yazabilirsiniz.</p>
+    </div>
+
+    <!-- S6 -->
+    <div class="section" id="s6">
+        <div class="section-header">
+            <div class="section-num">06</div>
+            <h2><span class="en">Your Rights</span><span class="tr">Haklarınız (KVKK)</span></h2>
+        </div>
+        <p class="en">Under GDPR and applicable law, you have the following rights:</p>
+        <p class="tr">6698 sayılı KVKK ve ilgili mevzuat kapsamında aşağıdaki haklara sahipsiniz:</p>
+        <div class="rights-grid">
+            <div class="right-card">
+                <div class="right-icon">📋</div>
+                <div class="right-title"><span class="en">Access</span><span class="tr">Bilgi Alma</span></div>
+                <div class="right-desc"><span class="en">Request a copy of all data we hold</span><span class="tr">Hangi verilerinizin işlendiğini öğrenme</span></div>
+            </div>
+            <div class="right-card">
+                <div class="right-icon">✏️</div>
+                <div class="right-title"><span class="en">Correction</span><span class="tr">Düzeltme</span></div>
+                <div class="right-desc"><span class="en">Update or correct inaccurate data</span><span class="tr">Hatalı verilerin düzeltilmesini talep etme</span></div>
+            </div>
+            <div class="right-card">
+                <div class="right-icon">🗑️</div>
+                <div class="right-title"><span class="en">Deletion</span><span class="tr">Silme</span></div>
+                <div class="right-desc"><span class="en">Request complete removal of your data</span><span class="tr">Hesap ve verilerinizin tamamen silinmesini isteme</span></div>
+            </div>
+            <div class="right-card">
+                <div class="right-icon">📤</div>
+                <div class="right-title"><span class="en">Portability</span><span class="tr">Taşınabilirlik</span></div>
+                <div class="right-desc"><span class="en">Receive your data in readable format</span><span class="tr">Verilerinizi okunabilir formatta alma</span></div>
+            </div>
+            <div class="right-card">
+                <div class="right-icon">🚫</div>
+                <div class="right-title"><span class="en">Objection</span><span class="tr">İtiraz</span></div>
+                <div class="right-desc"><span class="en">Object to specific data processing</span><span class="tr">Veri işleme faaliyetlerine itiraz etme</span></div>
+            </div>
+            <div class="right-card">
+                <div class="right-icon">⏸️</div>
+                <div class="right-title"><span class="en">Restriction</span><span class="tr">Kısıtlama</span></div>
+                <div class="right-desc"><span class="en">Request restriction of processing</span><span class="tr">Veri işlemenin kısıtlanmasını talep etme</span></div>
+            </div>
+        </div>
+        <p class="en">To exercise any of these rights, contact <strong>privacy@safeping.app</strong>. We will respond within 30 days.</p>
+        <p class="tr">Bu haklarınızı kullanmak için <strong>privacy@safeping.app</strong> adresine yazabilirsiniz. 30 gün içinde yanıt vereceğiz.</p>
+    </div>
+
+    <!-- S7 -->
+    <div class="section" id="s7">
+        <div class="section-header">
+            <div class="section-num">07</div>
+            <h2><span class="en">Children's Privacy</span><span class="tr">Çocukların Gizliliği</span></h2>
+        </div>
+        <p class="en">SafePing is not directed at children under the age of 13. We do not knowingly collect personal information from children. If you believe a child has provided us with personal data, please contact us immediately and we will delete it.</p>
+        <p class="tr">SafePing, 13 yaşın altındaki çocuklara yönelik değildir. Çocuklardan bilerek kişisel veri toplamıyoruz. Bir çocuğun bize kişisel veri sağladığını düşünüyorsanız lütfen hemen bizimle iletişime geçin — ilgili veriyi derhal sileceğiz.</p>
+    </div>
+
+    <!-- S8 -->
+    <div class="section" id="s8">
+        <div class="section-header">
+            <div class="section-num">08</div>
+            <h2><span class="en">Changes to This Policy</span><span class="tr">Politika Değişiklikleri</span></h2>
+        </div>
+        <p class="en">We may update this Privacy Policy from time to time. When we do, we will update the "Last Updated" date at the top of this page and notify users via the app. Continued use of SafePing after changes constitutes acceptance of the new policy.</p>
+        <p class="tr">Bu Gizlilik Politikası zaman zaman güncellenebilir. Değişiklik yaptığımızda sayfanın üst kısmındaki tarihi revize eder ve kullanıcıları uygulama üzerinden bilgilendiririz. Değişiklikler sonrası SafePing'i kullanmaya devam etmek, yeni politikayı kabul ettiğiniz anlamına gelir.</p>
+    </div>
+
+    <!-- S9 -->
+    <div class="section" id="s9">
+        <div class="section-header">
+            <div class="section-num">09</div>
+            <h2><span class="en">Contact</span><span class="tr">İletişim</span></h2>
+        </div>
+        <p class="en">For any privacy-related questions or requests regarding your personal data:</p>
+        <p class="tr">Kişisel verilerinize ilişkin her türlü soru ve talebiniz için:</p>
+    </div>
+
+    <div class="contact-cta">
+        <h3>
+            <span class="en">Get in touch</span>
+            <span class="tr">Bize Ulaşın</span>
+        </h3>
+        <p>
+            <span class="en">We typically respond within 2 business days.</span>
+            <span class="tr">Genellikle 2 iş günü içinde yanıt veriyoruz.</span>
+        </p>
+        <a href="mailto:privacy@safeping.app" class="email-btn">✉️ privacy@safeping.app</a>
+    </div>
+
+</div><!-- /legal-content -->
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="/" class="logo">
+                    <div class="logo-icon">🛡️</div>
+                    SafePing
+                </a>
+                <p>
+                    <span class="en">Daily check-ins for peace of mind. Keeping families connected, everywhere.</span>
+                    <span class="tr">Huzur için günlük check-in'ler. Aileleri her yerde bağlı tutuyor.</span>
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4><span class="en">Product</span><span class="tr">Ürün</span></h4>
+                <ul>
+                    <li><a href="/#features"><span class="en">Features</span><span class="tr">Özellikler</span></a></li>
+                    <li><a href="/#pricing"><span class="en">Pricing</span><span class="tr">Fiyatlar</span></a></li>
+                    <li><a href="/#roadmap"><span class="en">Roadmap</span><span class="tr">Yol Haritası</span></a></li>
+                    <li><a href="/#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4><span class="en">Company</span><span class="tr">Şirket</span></h4>
+                <ul>
+                    <li><a href="/#investor"><span class="en">Investors</span><span class="tr">Yatırımcılar</span></a></li>
+                    <li><a href="/"><span class="en">About Us</span><span class="tr">Hakkımızda</span></a></li>
+                    <li><a href="mailto:hello@safeping.app"><span class="en">Contact</span><span class="tr">İletişim</span></a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4><span class="en">Legal</span><span class="tr">Yasal</span></h4>
+                <ul>
+                    <li><a href="/privacy" class="active"><span class="en">Privacy Policy</span><span class="tr">Gizlilik Politikası</span></a></li>
+                    <li><a href="/terms"><span class="en">Terms of Service</span><span class="tr">Kullanım Şartları</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 SafePing. All rights reserved.</span>
+            <div class="social-links">
+                <a href="#">𝕏</a>
+                <a href="#">in</a>
+                <a href="#">📘</a>
+                <a href="#">📸</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Language toggle — same pattern as index.html
+    const langBtns = document.querySelectorAll('.lang-btn');
+    const html = document.documentElement;
+
+    langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const lang = btn.dataset.lang;
+            html.dataset.lang = lang;
+            langBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
+    });
+
+    // Header scroll
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Auto-detect browser language
+    const browserLang = navigator.language || navigator.userLanguage;
+    if (browserLang.startsWith('tr')) {
+        html.dataset.lang = 'tr';
+        langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === 'tr'));
+    }
+</script>
+</body>
+</html>
